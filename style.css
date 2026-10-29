@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none; /* Mencegah teks terblok saat disentuh */
+}
+
+body {
+    background-color: #1e272e;
+    color: white;
+    overflow: hidden; /* Mencegah scroll di layar TV */
+}
+
+.screen {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Tombol Besar */
+.btn-large {
+    padding: 20px 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background-color: #ffda79;
+    color: #2f3640;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 8px 0 #ccae62;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-large:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 #ccae62;
+}
+
+/* Spinner Sederhana */
+.spinner-box {
+    margin-top: 30px;
+    padding: 40px;
+    background-color: #2f3640;
+    border: 5px solid #ffda79;
+    border-radius: 20px;
+    min-width: 300px;
+}
+
+#spinner-text {
+    font-size: 3rem;
+    color: #ffda79;
+}
+
+/* Header Game */
+.header-info {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* Split Screen */
+.split-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 80px; /* Jarak untuk header */
+}
+
+.team-side {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.team-a {
+    background-color: #ff4757; /* Merah */
+    border-right: 5px solid #2f3640;
+}
+
+.team-b {
+    background-color: #1e90ff; /* Biru */
+}
+
+/* Elemen dalam Game */
+.score-board {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.question-text {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.option-btn {
+    padding: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #bdc3c7;
+}
+
+.option-btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 #bdc3c7;
+}
+
+/* Lock Overlay (Jika salah tekan) */
+.lock-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffda79;
+    font-size: 4rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none; /* Tidak bisa diklik */
+    transition: opacity 0.3s;
+}
+
+.team-side.locked .lock-overlay {
+    opacity: 1;
+    pointer-events: all; /* Memblokir sentuhan ke opsi di bawahnya */
+}
