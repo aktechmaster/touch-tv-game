@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Duel - Touch TV Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LAYAR AWAL -->
+    <div id="start-screen" class="screen active">
+        <h1>ENGLISH DUEL</h1>
+        <p>Adu Cepat Bahasa Inggris!</p>
+        <button id="btn-start" class="btn-large">MULAI MAIN</button>
+    </div>
+
+    <!-- LAYAR SPINNER -->
+    <div id="spinner-screen" class="screen">
+        <h2>Memilih Topik...</h2>
+        <div class="spinner-box">
+            <h1 id="spinner-text">???</h1>
+        </div>
+    </div>
+
+    <!-- LAYAR GAME (SPLIT SCREEN) -->
+    <div id="game-screen" class="screen">
+        <div class="header-info">
+            <h2 id="topic-display">Topik: -</h2>
+            <h2 id="question-counter">Soal: 1/10</h2>
+        </div>
+        
+        <div class="split-container">
+            <!-- Sisi Tim A (Kiri) -->
+            <div id="team-a-side" class="team-side team-a">
+                <div class="score-board">Tim A: <span id="score-a">0</span></div>
+                <div class="question-text" id="question-a">Menunggu soal...</div>
+                <div class="options-container" id="options-a"></div>
+                <div class="lock-overlay" id="lock-a">X SALAH (-1)</div>
+            </div>
+
+            <!-- Sisi Tim B (Kanan) -->
+            <div id="team-b-side" class="team-side team-b">
+                <div class="score-board">Tim B: <span id="score-b">0</span></div>
+                <div class="question-text" id="question-b">Menunggu soal...</div>
+                <div class="options-container" id="options-b"></div>
+                <div class="lock-overlay" id="lock-b">X SALAH (-1)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAYAR HASIL -->
+    <div id="result-screen" class="screen">
+        <h1>PERMAINAN SELESAI</h1>
+        <h2 id="winner-text">Tim Menang!</h2>
+        <h3>Skor Akhir:</h3>
+        <p>Tim A: <span id="final-score-a">0</span> | Tim B: <span id="final-score-b">0</span></p>
+        <button id="btn-restart" class="btn-large">MAIN LAGI</button>
+    </div>
+
+    <!-- Script dipanggil berurutan -->
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
